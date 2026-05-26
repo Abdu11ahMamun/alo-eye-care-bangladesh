@@ -1,0 +1,6 @@
+{
+  "name": "Alo Eye Care Bangladesh",
+  "description": "Premium, responsive eye care website and appointment system for Alo Eye Care (aloeyecarebd.com) with 3D elements, interactive clinical screening, and scheduling.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

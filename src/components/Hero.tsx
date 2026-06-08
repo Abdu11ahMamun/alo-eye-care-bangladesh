@@ -1,152 +1,162 @@
-import { ArrowRight, Eye, Sparkles, Award, ShieldCheck, Heart } from 'lucide-react';
+import { useEffect, useRef } from 'react';
+import { ArrowRight, Phone, Calendar, ShieldCheck, Award, Eye, Star } from 'lucide-react';
 import heroImg from '../assets/images/alo_eyecare_hero_1779739508863.png';
+import { STATS, DIRECT_HELPLINE } from '../data';
+import { Lang } from '../types';
 
-interface HeroProps {
-  onNavigate: (section: string) => void;
-}
+interface HeroProps { onNavigate: (s: string) => void; lang: Lang; }
 
-export default function Hero({ onNavigate }: HeroProps) {
+export default function Hero({ onNavigate, lang }: HeroProps) {
+  const t = (en: string, bn: string) => lang === 'bn' ? bn : en;
+  const imgRef = useRef<HTMLDivElement>(null);
+
+  /* Subtle parallax on hero image */
+  useEffect(() => {
+    const el = imgRef.current;
+    if (!el) return;
+    const onScroll = () => {
+      const y = window.scrollY;
+      el.style.transform = `translateY(${y * 0.18}px)`;
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
-    <section
-      id="hero-section"
-      className="relative min-h-screen bg-slate-50 pt-32 pb-16 overflow-hidden flex items-center medical-grid"
-    >
-      <div className="absolute top-1/4 right-[5%] w-[450px] h-[450px] rounded-full bg-gradient-to-tr from-cyan-300 to-teal-200 opacity-20 filter blur-[90px] focal-ray z-0"></div>
-      <div className="absolute bottom-10 left-[5%] w-[350px] h-[350px] rounded-full bg-amber-200 opacity-25 filter blur-[100px] focal-ray z-0"></div>
+    <section id="hero-section" className="hero-bg">
+      <div className="hero-glow-1" />
+      <div className="hero-glow-2" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        {/* Main 12-column Bento Grid Layout */}
-        <div className="grid grid-cols-12 gap-8 items-stretch">
-          
-          {/* Main Hero Pitches - Col Span 12 on mobile, 7 on desktop */}
-          <div 
-            id="hero-main-bento" 
-            className="col-span-12 lg:col-span-7 bg-white rounded-[2.5rem] border border-slate-200 p-8 sm:p-12 flex flex-col justify-between relative overflow-hidden shadow-xl shadow-slate-200/50 hover:shadow-2xl transition-all duration-300"
-          >
-            {/* Background elements */}
-            <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-teal-500/5 rounded-full blur-3xl"></div>
+      <div className="container" style={{ position: 'relative', zIndex: 1, paddingTop: '5rem', paddingBottom: '4.5rem' }}>
+        <div style={{ display: 'grid', gap: '3rem', alignItems: 'center' }} className="hero-inner-grid">
 
-            <div className="space-y-6 z-10">
-              {/* Trust badge with bento glass styling */}
-              <div 
-                id="trust-badge" 
-                className="inline-flex items-center gap-2 px-3 py-1 bg-teal-50 text-teal-700 rounded-full text-xs font-bold uppercase tracking-widest border border-teal-100"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-brand-gold fill-brand-gold" />
-                <span className="font-display">
-                  Top Rated Eye Care Network in BD
-                </span>
-              </div>
-
-              {/* Powerful display heading */}
-              <h1 id="hero-display-title" className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl xl:text-5xl text-slate-900 leading-[1.1] tracking-tight text-left">
-                Your Vision Is Our <br/> 
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600 underline decoration-teal-100/60">Brightest</span> Priority.
-              </h1>
-
-              {/* Clear medical description */}
-              <p id="hero-description" className="text-sm sm:text-base text-slate-500 max-w-xl font-normal leading-relaxed text-left">
-                Alo Eye Care is a pioneering, ophthalmologist-led diagnostic and microscopic surgical network. Experience world-class stitchless cataract Phacoemulsification and custom laser correction inside our sterile, high-precision clinics in Dhaka, Chattogram and Sylhet.
-              </p>
+          {/* ── LEFT ─────────────────────────────────────────────────── */}
+          <div>
+            {/* Trust pill */}
+            <div className="anim-fade-up" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(244,123,32,0.15)', border: '1px solid rgba(244,123,32,0.4)', borderRadius: '999px', padding: '0.35rem 1.1rem', marginBottom: '2rem' }}>
+              <Star size={11} style={{ color: 'var(--brand-orange)', fill: 'var(--brand-orange)' }} />
+              <span className="bn" style={{ fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--brand-orange)' }}>
+                {t('BMDC নিবন্ধিত · চট্টগ্রাম ও ফেনী', 'BMDC Registered · Chattogram & Feni')}
+              </span>
             </div>
 
-            {/* CTA Group with tactile bento buttons */}
-            <div id="hero-cta-group" className="flex flex-col sm:flex-row gap-4 mt-8 z-10">
-              <button
-                id="hero-book-now-btn"
-                onClick={() => onNavigate('booking')}
-                className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm px-8 py-4 rounded-2xl flex items-center justify-center gap-3 shadow-lg transition-all cursor-pointer"
-              >
-                Book Appointment
-                <ArrowRight className="w-5 h-5 text-teal-300 sm:animate-pulse" />
+            {/* Headline — large, editorial, italic accent */}
+            <h1 className="anim-fade-up-2" style={{ fontFamily: 'Playfair Display, Hind Siliguri, serif', fontSize: 'clamp(2.5rem, 5.5vw, 4rem)', fontWeight: 800, lineHeight: 1.08, color: '#fff', marginBottom: '1.375rem', letterSpacing: '-0.025em' }}>
+              <span className="bn">{t('আপনার দৃষ্টিশক্তিই', 'Your Vision Is Our')}</span>
+              <br />
+              <em style={{ color: 'var(--brand-orange)', fontStyle: 'italic', display: 'block', marginTop: '0.1em' }}>
+                <span className="bn">{t('আমাদের সর্বোচ্চ অগ্রাধিকার।', 'Brightest Priority.')}</span>
+              </em>
+            </h1>
+
+            {/* Sub */}
+            <p className="anim-fade-up-3 bn" style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.68)', lineHeight: 1.8, marginBottom: '2.5rem', maxWidth: '520px' }}>
+              {t('চট্টগ্রাম ও ফেনীতে বিশেষজ্ঞ চক্ষু চিকিৎসা কেন্দ্র — ছানি অপারেশন, বাঁকা চোখ, গ্লুকোমা, নেত্রনালী অপারেশন ও আরও সেবা।', 'Expert ophthalmologist-led eye care in Chattogram & Feni — cataract surgery, squint correction, glaucoma, DCR & more.')}
+            </p>
+
+            {/* CTAs */}
+            <div className="anim-fade-up-3" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.875rem', marginBottom: '3rem', animationDelay: '0.35s' }}>
+              <button onClick={() => onNavigate('booking')} className="btn btn-orange btn-lg">
+                <Calendar size={18} />
+                <span className="bn">{t('অ্যাপয়েন্টমেন্ট বুক করুন', 'Book Appointment')}</span>
+                <ArrowRight size={16} />
               </button>
-              
-              <button
-                id="hero-test-now-btn"
-                onClick={() => onNavigate('vision-test')}
-                className="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-sm px-8 py-4 rounded-2xl border border-slate-200 transition-all cursor-pointer flex items-center justify-center gap-2"
-              >
-                <Eye className="w-5 h-5 text-teal-500" />
-                Test Vision Instantly
+              <button onClick={() => onNavigate('vision-test')} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1.5px solid rgba(255,255,255,0.25)', borderRadius: 'var(--radius-btn)', padding: '0.95rem 1.75rem', fontWeight: 600, fontSize: '1rem', cursor: 'pointer', transition: 'all 0.2s', fontFamily: 'var(--font-body)' }}>
+                <Eye size={18} />
+                <span className="bn">{t('বিনামূল্যে দৃষ্টি পরীক্ষা', 'Free Vision Test')}</span>
               </button>
             </div>
+
+            {/* Trust badges */}
+            <div className="anim-fade-up-3" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.625rem', animationDelay: '0.45s' }}>
+              {[
+                { Icon: ShieldCheck, en: 'ISO Sterile OT',      bn: 'ISO জীবাণুমুক্ত OT' },
+                { Icon: Award,       en: '45,000+ Patients',    bn: '৪৫,০০০+ রোগী চিকিৎসা' },
+                { Icon: Eye,         en: '10+ Years Service',   bn: '১০+ বছর অভিজ্ঞতা' },
+              ].map(({ Icon, en, bn }) => (
+                <div key={en} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.14)', borderRadius: '999px', padding: '0.3rem 0.875rem', fontSize: '0.73rem', color: 'rgba(255,255,255,0.82)', fontWeight: 500 }}>
+                  <Icon size={12} style={{ color: 'var(--brand-cyan)' }} />
+                  <span className="bn">{t(bn, en)}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Phone */}
+            <a href={`tel:${DIRECT_HELPLINE}`} className="anim-fade-up-3" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'rgba(255,255,255,0.6)', marginTop: '1.5rem', fontSize: '0.9rem', fontWeight: 500, animationDelay: '0.5s' }}>
+              <Phone size={14} style={{ color: 'var(--brand-cyan)' }} />
+              {DIRECT_HELPLINE}
+            </a>
           </div>
 
-          {/* Right Column Stack for Bento: Stats & Image suite - Col Span 12 on mobile, 5 on desktop */}
-          <div className="col-span-12 lg:col-span-5 flex flex-col gap-6">
-            
-            {/* Quick Stats Bento Card: Colored block matching design template */}
-            <div 
-              id="hero-stats-bento" 
-              className="bg-gradient-to-br from-teal-600 to-teal-700 rounded-[2.5rem] p-8 text-white flex flex-col justify-between shadow-lg relative overflow-hidden transition-all duration-300 hover:shadow-xl"
-            >
-              <div className="relative z-10 text-left">
-                <h3 className="text-lg font-bold mb-1">Ready for your checkup?</h3>
-                <p className="text-teal-100 text-xs">Average clinical wait time: <span className="font-bold text-white">12 minutes</span></p>
+          {/* ── RIGHT — image with depth layers ─────────────────────── */}
+          <div className="anim-fade-up-2" style={{ position: 'relative' }}>
+
+            {/* Decorative ring behind card */}
+            <div style={{ position: 'absolute', top: -20, right: -20, width: '110%', height: '110%', borderRadius: '1.5rem', border: '1px solid rgba(255,255,255,0.08)', zIndex: 0, pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', top: -40, right: -40, width: '120%', height: '120%', borderRadius: '2rem', border: '1px dashed rgba(255,255,255,0.05)', zIndex: 0, pointerEvents: 'none' }} />
+
+            {/* Image card */}
+            <div style={{ borderRadius: '1.25rem', overflow: 'hidden', position: 'relative', border: '1px solid rgba(255,255,255,0.12)', boxShadow: '0 40px 80px rgba(0,0,0,0.45)', zIndex: 1 }}>
+              <div ref={imgRef} style={{ overflow: 'hidden' }}>
+                <img src={heroImg} alt={t('আলো আই কেয়ার ক্লিনিক', 'Alo Eye Care clinic')} style={{ width: '100%', maxHeight: 420, objectFit: 'cover', display: 'block', transition: 'transform 0.1s linear' }} />
+              </div>
+              {/* Gradient overlay */}
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(11,29,94,0.8) 0%, rgba(11,29,94,0.2) 50%, transparent 100%)' }} />
+
+              {/* Bottom info */}
+              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+                <div>
+                  <div style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.55)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '2px' }} className="bn">{t('প্রধান কার্যালয়', 'Head Office')}</div>
+                  <div style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.1rem', fontWeight: 700, color: '#fff' }} className="bn">{t('চট্টগ্রাম', 'Chattogram')}</div>
+                </div>
+                <div className="glass-pill">
+                  <span className="pulse-dot" />
+                  <span className="bn">{t('এখন খোলা', 'Open Now')}</span>
+                </div>
               </div>
 
-              <div className="flex justify-between items-end relative z-10 mt-8">
-                <div className="text-left">
-                  <div className="text-4xl font-black">45k+</div>
-                  <div className="text-[10px] text-teal-100 uppercase tracking-wider font-bold">Happy Patients Saved</div>
-                </div>
-                <div className="w-12 h-12 bg-white/20 backdrop-blur rounded-full flex items-center justify-center border border-white/30 text-white shadow-inner">
-                  <Heart className="w-6 h-6 fill-white/10" />
-                </div>
-              </div>
-
-              {/* Decorative faint background eye graphic */}
-              <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
-                <Eye className="w-32 h-32" />
+              {/* Top corner badge */}
+              <div style={{ position: 'absolute', top: '1rem', left: '1rem', background: 'rgba(255,255,255,0.12)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '0.5rem', padding: '0.4rem 0.75rem', fontSize: '0.7rem', fontWeight: 700, color: '#fff', letterSpacing: '0.04em' }} className="bn">
+                {t('১০+ বছর অভিজ্ঞতা', '10+ Years')}
               </div>
             </div>
 
-            {/* Clinical Ocular suite card layout with image */}
-            <div 
-              id="hero-image-bento" 
-              className="bg-white rounded-[2.5rem] border border-slate-200/80 p-6 shadow-xl shadow-slate-200/40 relative overflow-hidden flex flex-col justify-between transition-all duration-300 hover:shadow-2xl"
-            >
-              
-              {/* Image suite with convex aesthetics */}
-              <div className="relative w-full aspect-video rounded-3xl overflow-hidden border border-slate-100 bg-teal-950">
-                <img
-                  src={heroImg}
-                  alt="Alo Eye Care Diagnostic and Examination Suite, Dhaka"
-                  className="w-full h-full object-cover brightness-[0.9]"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 scan-line pointer-events-none mix-blend-overlay"></div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-                
-                {/* Floating validation target indicator overlay */}
-                <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-lg text-[9px] font-mono font-bold tracking-wider text-slate-800 flex items-center gap-1.5 shadow-sm">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-                  Dhaka Suite Room 402
+            {/* Floating stat cards */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.875rem', marginTop: '1rem', position: 'relative', zIndex: 1 }}>
+              {[
+                { val: '৬+', valEn: '6+',  label: 'বিশেষায়িত সেবা',     labelEn: 'Specialised Services' },
+                { val: '৪',  valEn: '4',   label: 'বিশেষজ্ঞ সার্জন',     labelEn: 'Expert Surgeons' },
+              ].map((s, i) => (
+                <div key={i} style={{ background: 'rgba(255,255,255,0.08)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.14)', borderRadius: '0.875rem', padding: '1.125rem 1.25rem', transition: 'background 0.2s' }}
+                  onMouseEnter={e => (e.currentTarget as HTMLDivElement).style.background = 'rgba(255,255,255,0.14)'}
+                  onMouseLeave={e => (e.currentTarget as HTMLDivElement).style.background = 'rgba(255,255,255,0.08)'}>
+                  <div style={{ fontFamily: 'Playfair Display, serif', fontSize: 'clamp(1.75rem,3vw,2.25rem)', fontWeight: 800, color: '#fff', lineHeight: 1 }} className="bn">{lang === 'bn' ? s.val : s.valEn}</div>
+                  <div style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.72)', marginTop: '0.25rem', fontWeight: 500 }} className="bn">{lang === 'bn' ? s.label : s.labelEn}</div>
                 </div>
-              </div>
-
-              {/* Technical Certifications micro-indicators inside bento card footer */}
-              <div id="hero-bento-card-footer" className="grid grid-cols-3 gap-2 pt-4 border-t border-slate-100 mt-4 text-left">
-                <div>
-                  <h4 className="font-display font-bold text-xs text-slate-800">ISO Labs</h4>
-                  <p className="text-[9px] text-slate-400 font-mono">100% Sterile</p>
-                </div>
-                <div>
-                  <h4 className="font-display font-bold text-xs text-slate-800">10+ Surgeons</h4>
-                  <p className="text-[9px] text-slate-400 font-mono">BMDC Reg.</p>
-                </div>
-                <div>
-                  <h4 className="font-display font-bold text-xs text-teal-700">৳0 MOCK</h4>
-                  <p className="text-[9px] text-slate-400 font-mono">Real Bookings</p>
-                </div>
-              </div>
-
+              ))}
             </div>
-
           </div>
 
         </div>
       </div>
+
+      {/* Stats bar */}
+      <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', background: 'rgba(0,0,0,0.22)', position: 'relative', zIndex: 1 }}>
+        <div className="container">
+          <div style={{ display: 'grid', gridTemplateColumns: `repeat(${STATS.length}, 1fr)` }}>
+            {STATS.map((s, i) => (
+              <div key={i} style={{ padding: '1.5rem 1rem', textAlign: 'center', borderRight: i < STATS.length - 1 ? '1px solid rgba(255,255,255,0.08)' : 'none', transition: 'background 0.2s' }}
+                onMouseEnter={e => (e.currentTarget as HTMLDivElement).style.background = 'rgba(255,255,255,0.04)'}
+                onMouseLeave={e => (e.currentTarget as HTMLDivElement).style.background = 'transparent'}>
+                <div style={{ fontFamily: 'Playfair Display, serif', fontSize: 'clamp(1.5rem,3.5vw,2.25rem)', fontWeight: 800, color: '#fff', lineHeight: 1 }} className="bn">{lang === 'bn' ? s.valueBn : s.value}</div>
+                <div style={{ fontSize: '0.68rem', color: 'rgba(255,255,255,0.5)', marginTop: '0.35rem', fontWeight: 500, letterSpacing: '0.04em' }} className="bn">{lang === 'bn' ? s.labelBn : s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <style>{`@media(min-width:900px){.hero-inner-grid{grid-template-columns:1fr 1fr!important}}`}</style>
     </section>
   );
 }

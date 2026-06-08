@@ -1,7 +1,9 @@
 export interface Doctor {
   id: string;
   name: string;
+  nameBn: string;
   specialty: string;
+  specialtyBn: string;
   degree: string;
   rating: number;
   reviewsCount: number;
@@ -14,9 +16,12 @@ export interface Doctor {
 export interface ServiceItem {
   id: string;
   title: string;
+  titleBn: string;
   description: string;
+  descriptionBn: string;
   details: string[];
-  icon: string; // Lucide icon name
+  detailsBn: string[];
+  icon: string;
   priceRange: string;
   duration: string;
   is3DHighlight?: boolean;
@@ -25,9 +30,12 @@ export interface ServiceItem {
 export interface BranchLocation {
   id: string;
   name: string;
+  nameBn: string;
   address: string;
+  addressBn: string;
   phone: string;
   hours: string;
+  hoursBn: string;
   mapEmbed?: string;
 }
 
@@ -51,3 +59,24 @@ export interface TestResult {
   colorBlindnessAnswers: number;
   overallRating: string;
 }
+
+export interface Testimonial {
+  id: string;
+  name: string;
+  nameBn: string;
+  location: string;
+  rating: number;
+  text: string;
+  textBn: string;
+  service: string;
+}
+
+export interface Stat {
+  value: string;
+  valueBn: string;
+  label: string;
+  labelBn: string;
+}
+
+/* Language toggle context type */
+export type Lang = 'en' | 'bn';

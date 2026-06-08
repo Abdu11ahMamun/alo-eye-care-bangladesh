@@ -1,174 +1,285 @@
 import { Doctor, ServiceItem, BranchLocation } from './types';
 
+/* ─── Contact / Helpline ──────────────────────────────────────────────────── */
+export const DIRECT_HELPLINE = '+880 1805-076619';
+export const DIRECT_HELPLINE_2 = '+880 1805-076620';
+export const EMAIL = 'info@aloeyecarebd.com';
+export const WEBSITE = 'www.aloeyecarebd.com';
+
+/* ─── Branch Locations ────────────────────────────────────────────────────── */
 export const BRANCHES: BranchLocation[] = [
   {
-    id: 'dhanmondi',
-    name: 'Dhaka - Dhanmondi (HQ)',
-    address: 'Level 4, Navana Tower, Rd 8/A (Near Satmasjid Road), Dhanmondi R/A, Dhaka - 1209',
-    phone: '+880 1789-900800',
-    hours: 'Sat - Thu: 9:00 AM - 9:00 PM | Fri: Closed',
+    id: 'chattogram_hq',
+    name: 'Chattogram — Head Office',
+    nameBn: 'চট্টগ্রাম — প্রধান কার্যালয়',
+    address: '2nd Floor, Total Tower, New-Monsurabad, A.K. Khan, Chattogram',
+    addressBn: '২য় তলা, টোটাল টাওয়ার, নিউ-মনসুরাবাদ, এ.কে. খান, চট্টগ্রাম',
+    phone: '+880 1805-076619',
+    hours: 'Sat – Thu: 9:00 AM – 9:00 PM | Fri: Closed',
+    hoursBn: 'শনি – বৃহস্পতি: সকাল ৯টা – রাত ৯টা | শুক্রবার: বন্ধ',
   },
   {
-    id: 'uttara',
-    name: 'Dhaka - Uttara Branch',
-    address: 'House 42, Road 18, Sector 11, Uttara, Dhaka - 1230',
-    phone: '+880 1789-900801',
-    hours: 'Sat - Thu: 10:00 AM - 8:00 PM | Fri: 3:00 PM - 8:00 PM',
+    id: 'feni',
+    name: 'Feni Branch',
+    nameBn: 'ফেনী শাখা',
+    address: 'Feni Health Care Complex, Trunk Road, Feni',
+    addressBn: 'ফেনী হেলথ কেয়ার কমপ্লেক্স, ট্রাংক রোড, ফেনী',
+    phone: '+880 1805-076620',
+    hours: 'Sat – Thu: 10:00 AM – 8:00 PM | Fri: Closed',
+    hoursBn: 'শনি – বৃহস্পতি: সকাল ১০টা – রাত ৮টা | শুক্রবার: বন্ধ',
   },
-  {
-    id: 'chattogram',
-    name: 'Chattogram - GEC Care Center',
-    address: 'Equity Garden, GEC Circle, O.R. Nizam Road, Chattogram',
-    phone: '+880 1845-667788',
-    hours: 'Sat - Thu: 10:00 AM - 8:00 PM | Fri: Closed',
-  },
-  {
-    id: 'sylhet',
-    name: 'Sylhet - Zindabazar Center',
-    address: 'Mahanagar Mansion, Level 3, East Zindabazar, Sylhet',
-    phone: '+880 1922-334455',
-    hours: 'Sat - Thu: 11:00 AM - 7:00 PM | Fri: Evening emergency services only',
-  }
 ];
 
-export const DIRECT_HELPLINE = '+880 9613-800800';
-
+/* ─── Services ────────────────────────────────────────────────────────────── */
 export const SERVICES: ServiceItem[] = [
   {
     id: 'cataract',
     title: 'Advanced Phaco Surgery',
-    description: 'Micro-incision cataract surgery with ultra-modern premium intraocular lens (IOL) implants.',
+    titleBn: 'অ্যাডভান্সড ফ্যাকো সার্জারি (ছানি)',
+    description: 'Micro-incision cataract surgery with modern premium intraocular lens (IOL) implants.',
+    descriptionBn: 'অত্যাধুনিক মাইক্রো-ইনসিশন ছানি অপারেশন এবং প্রিমিয়াম ইন্ট্রাঅকুলার লেন্স (IOL) প্রতিস্থাপন।',
     details: [
-      'Stitchless, injection-less, and painless 10-minute procedure',
-      'Wide selection of Premium Multifocal and Toric IOLs',
-      'Rapid visually responsive recovery within 24 hours',
-      'Equipped with state-of-the-art Centurion Vision System'
+      'Stitchless, injection-less, painless 10-minute procedure',
+      'Premium Multifocal and Toric IOL options',
+      'Rapid visual recovery within 24 hours',
+      'Centurion Vision System equipped theatre',
+    ],
+    detailsBn: [
+      'সেলাইবিহীন, ইঞ্জেকশনবিহীন, ব্যথামুক্ত ১০ মিনিটের প্রক্রিয়া',
+      'প্রিমিয়াম মাল্টিফোকাল ও টরিক IOL বিকল্প',
+      '২৪ ঘণ্টার মধ্যে দৃষ্টিশক্তি পুনরুদ্ধার',
+      'সেন্টুরিয়ন ভিশন সিস্টেম সজ্জিত অপারেশন থিয়েটার',
     ],
     icon: 'Eye',
-    priceRange: '৳45,000 - ৳1,20,000',
+    priceRange: '৳45,000 – ৳1,20,000',
     duration: '15 mins',
-    is3DHighlight: true
-  },
-  {
-    id: 'lasik',
-    title: 'LASIK & Refractive Suite',
-    description: 'Get freedom from glasses and contact lenses with high-precision computer-guided laser correction.',
-    details: [
-      'Advanced Wavefront-Guided Custom LASIK treatment',
-      'Blade-free Femto-LASIK options for ultimate safety',
-      'Painless corneal reshaping with high-accuracy results',
-      'Suitable for myopia, hyperopia, and astigmatism correction'
-    ],
-    icon: 'Sparkles',
-    priceRange: '৳60,000 - ৳95,000',
-    duration: '20 mins',
-    is3DHighlight: true
-  },
-  {
-    id: 'pediatric',
-    title: 'Pediatric & Strabismus Unit',
-    description: 'Specialized eye care and squint correction for infants, children, and school-going patients.',
-    details: [
-      'Friendly diagnostic environments tailored for children',
-      'Amblyopia (lazy eye) therapy and tracking',
-      'Non-surgical and surgical squint correction',
-      'Myopia control clinic with specialized orthokeratology'
-    ],
-    icon: 'Users',
-    priceRange: '৳1,500 - ৳25,000',
-    duration: '30 mins'
-  },
-  {
-    id: 'retina',
-    title: 'Diabetic Retinal Care',
-    description: 'Advanced diagnosis and expert therapy for diabetic retinopathy and macular disease.',
-    details: [
-      'High-resolution Optical Coherence Tomography (OCT)',
-      'Digital fundus photography and fluorescein angiography',
-      'Intravitreal injections and advanced pattern laser therapy',
-      'Expert Vitreo-retinal surgeon consultation'
-    ],
-    icon: 'ShieldAlert',
-    priceRange: '৳2,500 - ৳15,000',
-    duration: '25 mins'
+    is3DHighlight: true,
   },
   {
     id: 'glaucoma',
     title: 'Glaucoma Management',
+    titleBn: 'গ্লুকোমা ব্যবস্থাপনা',
     description: 'Early detection and comprehensive nerve pressure stabilization to preserve your visual field.',
+    descriptionBn: 'দৃষ্টিক্ষেত্র রক্ষায় গ্লুকোমার প্রাথমিক শনাক্তকরণ ও স্নায়ু চাপ স্থিতিশীলকরণ।',
     details: [
       'Non-contact Tonometry + Goldmann Applanation',
       'Humphrey Visual Field (HVF) analysis',
       'Laser Peripheral Iridotomy (LPI) therapy',
-      'Customized long-term pressure stabilization'
+      'Customised long-term pressure management',
     ],
-    icon: 'Activity',
-    priceRange: '৳2,000 - ৳8,000',
-    duration: '20 mins'
+    detailsBn: [
+      'নন-কন্টাক্ট টোনোমেট্রি + গোল্ডম্যান অ্যাপ্ল্যানেশন',
+      'হামফ্রে ভিজ্যুয়াল ফিল্ড (HVF) বিশ্লেষণ',
+      'লেজার পেরিফেরাল ইরিডোটমি (LPI) থেরাপি',
+      'দীর্ঘমেয়াদী কাস্টমাইজড প্রেশার ব্যবস্থাপনা',
+    ],
+    icon: 'ShieldAlert',
+    priceRange: '৳2,000 – ৳8,000',
+    duration: '20 mins',
+    is3DHighlight: false,
+  },
+  {
+    id: 'squint',
+    title: 'Squint (Strabismus) Surgery',
+    titleBn: 'বাঁকা চোখের চিকিৎসা (স্কুইন্ট)',
+    description: 'Surgical and non-surgical correction of misaligned eyes for children and adults.',
+    descriptionBn: 'শিশু ও প্রাপ্তবয়স্কদের বাঁকা চোখের অস্ত্রোপচার ও অ-অস্ত্রোপচার সংশোধন।',
+    details: [
+      'Pediatric-friendly diagnostic environment',
+      'Amblyopia (lazy eye) therapy & tracking',
+      'Surgical and non-surgical correction options',
+      'Myopia control with orthokeratology',
+    ],
+    detailsBn: [
+      'শিশু-বান্ধব ডায়াগনস্টিক পরিবেশ',
+      'অলস চোখ (অ্যাম্বলিওপিয়া) থেরাপি ও পর্যবেক্ষণ',
+      'অস্ত্রোপচার ও অ-অস্ত্রোপচার উভয় বিকল্প',
+      'অর্থোকেরাটোলজি দিয়ে মায়োপিয়া নিয়ন্ত্রণ',
+    ],
+    icon: 'Users',
+    priceRange: '৳1,500 – ৳25,000',
+    duration: '30 mins',
+    is3DHighlight: false,
+  },
+  {
+    id: 'dcr',
+    title: 'DCR / DCT Surgery',
+    titleBn: 'নেত্রনালী অপারেশন (DCR/DCT)',
+    description: 'Surgical relief for blocked tear ducts causing chronic watery eyes and infections.',
+    descriptionBn: 'দীর্ঘস্থায়ী চোখ দিয়ে পানি পড়া ও সংক্রমণের জন্য অবরুদ্ধ নেত্রনালীর অস্ত্রোপচার।',
+    details: [
+      'Minimally invasive dacryocystorhinostomy',
+      'Endo-DCR (no external scar) option available',
+      'Relieves chronic epiphora (watering eyes)',
+      'Day-care procedure — no hospital admission',
+    ],
+    detailsBn: [
+      'মিনিমালি ইনভেসিভ ড্যাক্রিওসিস্টোরাইনোস্টমি',
+      'এন্ডো-DCR (বাহ্যিক দাগহীন) বিকল্প উপলব্ধ',
+      'দীর্ঘস্থায়ী চোখ দিয়ে পানি পড়া দূর করে',
+      'ডে-কেয়ার প্রক্রিয়া — হাসপাতালে ভর্তির প্রয়োজন নেই',
+    ],
+    icon: 'Droplets',
+    priceRange: '৳15,000 – ৳35,000',
+    duration: '45 mins',
+    is3DHighlight: false,
+  },
+  {
+    id: 'pterygium',
+    title: 'Pterygium Excision',
+    titleBn: 'চোখের মাংস বৃদ্ধি (টেরিজিয়াম)',
+    description: 'Surgical removal of pterygium with conjunctival autograft to prevent recurrence.',
+    descriptionBn: 'পুনরাবৃত্তি রোধে কনজাংকটিভাল অটোগ্রাফ্ট সহ টেরিজিয়াম অপসারণ।',
+    details: [
+      'Conjunctival autograft technique (lowest recurrence)',
+      'Mitomycin-C adjunctive therapy available',
+      'Improves vision & cosmetic appearance',
+      'Local anaesthesia — comfortable experience',
+    ],
+    detailsBn: [
+      'কনজাংকটিভাল অটোগ্রাফ্ট কৌশল (সর্বনিম্ন পুনরাবৃত্তি)',
+      'মাইটোমাইসিন-সি সহায়ক থেরাপি উপলব্ধ',
+      'দৃষ্টি ও চোখের সৌন্দর্য উন্নত করে',
+      'লোকাল অ্যানেস্থেসিয়া — আরামদায়ক অভিজ্ঞতা',
+    ],
+    icon: 'Scissors',
+    priceRange: '৳8,000 – ৳20,000',
+    duration: '30 mins',
+    is3DHighlight: false,
   },
   {
     id: 'spectacles',
-    title: 'Precision Sight & Optics',
-    description: 'In-house optical suite for computerized eye screening and custom lens crafting.',
+    title: 'Refraction & Optical Suite',
+    titleBn: 'চশমার পাওয়ার নির্ণয় ও অপটিক্যাল',
+    description: 'Computerised eye testing and precision lens crafting in our in-house optical suite.',
+    descriptionBn: 'কম্পিউটারাইজড চোখ পরীক্ষা ও আমাদের ইন-হাউস অপটিক্যাল সুইটে নির্ভুল লেন্স তৈরি।',
     details: [
-      'Fully computerized auto-refractor ocular evaluation',
-      'Subtle prescription pairing for digital eye-strain relief',
-      'Wide brand range of anti-reflective, blue-cut, and transition lenses',
-      'Guaranteed 1-hour delivery for primary single-vision prescriptions'
+      'Fully computerised auto-refractor assessment',
+      'Anti-reflective, blue-cut & transition lenses',
+      'Contact lens fitting & low vision aids',
+      '1-hour delivery on single-vision prescriptions',
+    ],
+    detailsBn: [
+      'সম্পূর্ণ কম্পিউটারাইজড অটো-রিফ্র্যাক্টর মূল্যায়ন',
+      'অ্যান্টি-রিফ্লেক্টিভ, ব্লু-কাট ও ট্রানজিশন লেন্স',
+      'কন্টাক্ট লেন্স ফিটিং ও লো ভিশন সহায়তা',
+      'একক দৃষ্টির প্রেসক্রিপশনে ১ ঘণ্টায় ডেলিভারি',
     ],
     icon: 'Glasses',
-    priceRange: '৳800 - ৳12,000',
-    duration: '10 mins'
-  }
+    priceRange: '৳800 – ৳12,000',
+    duration: '10 mins',
+    is3DHighlight: false,
+  },
 ];
 
+/* ─── Doctors ─────────────────────────────────────────────────────────────── */
 export const DOCTORS: Doctor[] = [
   {
     id: 'dr_mazhar',
     name: 'Prof. Dr. Mazharul Alam',
+    nameBn: 'অধ্যাপক ডা. মাজহারুল আলম',
     specialty: 'Cataract, Cornea & Refractive Surgeon',
-    degree: 'MBBS, FCPS (Ophth), MS (Ocular Micro-Surgery), Fellowship in Cornea (Inland/Overseas)',
+    specialtyBn: 'ছানি, কর্নিয়া ও রিফ্র্যাক্টিভ সার্জন',
+    degree: 'MBBS, FCPS (Ophth), MS, Fellowship Cornea',
     rating: 4.9,
     reviewsCount: 342,
     availableDays: ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday'],
     timeSlots: ['05:00 PM', '06:00 PM', '07:00 PM', '08:00 PM'],
     bdtFees: 2000,
-    imageUrl: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=200&h=200'
+    imageUrl: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=200&h=200',
   },
   {
     id: 'dr_nusrat',
     name: 'Dr. Nusrat Jahan Chowdhury',
+    nameBn: 'ডা. নুসরাত জাহান চৌধুরী',
     specialty: 'Pediatric Ophthalmology & Squint Specialist',
-    degree: 'MBBS, DO, FCPS (Ophthalmology), Fellow- Pediatric Ophthalmology',
+    specialtyBn: 'পেডিয়াট্রিক চক্ষুবিদ্যা ও স্কুইন্ট বিশেষজ্ঞ',
+    degree: 'MBBS, DO, FCPS (Ophthalmology)',
     rating: 4.8,
     reviewsCount: 194,
     availableDays: ['Sunday', 'Monday', 'Wednesday', 'Thursday'],
     timeSlots: ['03:00 PM', '04:00 PM', '05:00 PM', '06:00 PM'],
     bdtFees: 1500,
-    imageUrl: 'https://images.unsplash.com/photo-1594824813573-246434de83fb?auto=format&fit=crop&q=80&w=200&h=200'
+    imageUrl: 'https://images.unsplash.com/photo-1594824813573-246434de83fb?auto=format&fit=crop&q=80&w=200&h=200',
   },
   {
     id: 'dr_shamsul',
     name: 'Dr. Shamsul Haque Manik',
+    nameBn: 'ডা. শামসুল হক মানিক',
     specialty: 'Vitreo-Retina & Laser Specialist',
-    degree: 'MBBS, MS (Ophthalmology), Trained in Vitreo-Retina (India)',
+    specialtyBn: 'ভিট্রিও-রেটিনা ও লেজার বিশেষজ্ঞ',
+    degree: 'MBBS, MS (Ophthalmology), Trained in Vitreo-Retina',
     rating: 4.9,
     reviewsCount: 228,
     availableDays: ['Saturday', 'Monday', 'Tuesday', 'Wednesday'],
     timeSlots: ['04:30 PM', '05:30 PM', '06:30 PM', '07:30 PM'],
     bdtFees: 1500,
-    imageUrl: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=200&h=200'
+    imageUrl: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=200&h=200',
   },
   {
     id: 'dr_shamim',
     name: 'Dr. Shamim Ara Chowdhury',
+    nameBn: 'ডা. শামিম আরা চৌধুরী',
     specialty: 'Glaucoma Specialist & General Consultant',
-    degree: 'MBBS, FCPS (Ophthalmology), Fellow Glaucoma (Isfahan)',
+    specialtyBn: 'গ্লুকোমা বিশেষজ্ঞ ও সাধারণ পরামর্শদাতা',
+    degree: 'MBBS, FCPS (Ophthalmology), Fellow Glaucoma',
     rating: 4.7,
     reviewsCount: 156,
     availableDays: ['Saturday', 'Sunday', 'Tuesday', 'Thursday'],
     timeSlots: ['05:00 PM', '06:00 PM', '07:00 PM'],
     bdtFees: 1200,
-    imageUrl: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=200&h=200'
-  }
+    imageUrl: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=200&h=200',
+  },
+];
+
+/* ─── Testimonials ────────────────────────────────────────────────────────── */
+export const TESTIMONIALS = [
+  {
+    id: 't1',
+    name: 'Rahim Uddin',
+    nameBn: 'রহিম উদ্দিন',
+    location: 'Chattogram',
+    rating: 5,
+    text: 'My cataract surgery was completely painless. The doctors and nurses were highly professional and caring. I can see clearly again after years.',
+    textBn: 'আমার ছানি অপারেশন সম্পূর্ণ ব্যথামুক্ত ছিল। ডাক্তার ও নার্সরা অত্যন্ত পেশাদার ও যত্নশীল ছিলেন। বছরের পর বছর পরে আবার স্পষ্ট দেখতে পাচ্ছি।',
+    service: 'Cataract Surgery',
+  },
+  {
+    id: 't2',
+    name: 'Fatema Begum',
+    nameBn: 'ফাতেমা বেগম',
+    location: 'Feni',
+    rating: 5,
+    text: "Brought my 7-year-old for squint correction. The team's expertise and gentleness with children was reassuring. Excellent result.",
+    textBn: 'আমার ৭ বছরের সন্তানকে বাঁকা চোখের চিকিৎসার জন্য নিয়ে আসি। শিশুদের প্রতি দলটির দক্ষতা ও সদয় আচরণ আশ্বস্তকারী ছিল। চমৎকার ফলাফল।',
+    service: 'Squint Surgery',
+  },
+  {
+    id: 't3',
+    name: 'Kamal Hossain',
+    nameBn: 'কামাল হোসেন',
+    location: 'Chattogram',
+    rating: 5,
+    text: 'Very well-organized clinic with modern equipment. My glaucoma is now properly managed and the follow-up care is excellent.',
+    textBn: 'আধুনিক সরঞ্জাম সহ অত্যন্ত সংগঠিত ক্লিনিক। আমার গ্লুকোমা এখন সঠিকভাবে নিয়ন্ত্রণে আছে এবং ফলো-আপ পরিচর্যা চমৎকার।',
+    service: 'Glaucoma Management',
+  },
+  {
+    id: 't4',
+    name: 'Nasrin Akter',
+    nameBn: 'নাসরিন আক্তার',
+    location: 'Chattogram',
+    rating: 5,
+    text: 'I had pterygium in both eyes. After the surgery, my eyes look and feel completely normal. Highly recommend Alo Eye Care.',
+    textBn: 'আমার উভয় চোখে টেরিজিয়াম ছিল। অপারেশনের পরে আমার চোখ দেখতে ও অনুভব করতে সম্পূর্ণ স্বাভাবিক। আলো আই কেয়ার দৃঢ়ভাবে সুপারিশ করছি।',
+    service: 'Pterygium Surgery',
+  },
+];
+
+/* ─── Stats ───────────────────────────────────────────────────────────────── */
+export const STATS = [
+  { value: '45,000+', valueBn: '৪৫,০০০+', label: 'Patients Treated', labelBn: 'রোগী চিকিৎসা' },
+  { value: '10+',     valueBn: '১০+',      label: 'Years of Service', labelBn: 'বছরের অভিজ্ঞতা' },
+  { value: '4',       valueBn: '৪',        label: 'Expert Surgeons', labelBn: 'বিশেষজ্ঞ সার্জন' },
+  { value: '2',       valueBn: '২',        label: 'Branch Locations', labelBn: 'শাখা অবস্থান' },
 ];

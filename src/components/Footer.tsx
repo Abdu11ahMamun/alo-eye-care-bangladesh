@@ -8,7 +8,7 @@ interface FooterProps { onNavigate: (s: string) => void; lang: Lang; }
 export default function Footer({ onNavigate, lang }: FooterProps) {
   const [activeBranch, setActiveBranch] = useState(BRANCHES[0].id);
   const selected = BRANCHES.find(b => b.id === activeBranch) || BRANCHES[0];
-  const t = (en: string, bn: string) => lang === 'bn' ? bn : en;
+  const t = (bn: string, en: string) => lang === 'bn' ? bn : en;
 
   const linkStyle = { display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.83rem', color: 'rgba(255,255,255,0.58)', textDecoration: 'none', marginBottom: '0.5rem', transition: 'color 0.18s', background: 'none', border: 'none', cursor: 'pointer', padding: 0, fontFamily: 'var(--font-body)', textAlign: 'left' as const };
 

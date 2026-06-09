@@ -18,7 +18,7 @@ export default function DoctorRoster({ onSelectDoctor, lang }: DoctorRosterProps
   const [search, setSearch] = useState('');
   const [filter, setFilter] = useState('All');
   const ref = useReveal();
-  const t = (en: string, bn: string) => lang === 'bn' ? bn : en;
+  const t = (bn: string, en: string) => lang === 'bn' ? bn : en;
 
   const filtered = DOCTORS.filter(doc => {
     const s = search.toLowerCase();

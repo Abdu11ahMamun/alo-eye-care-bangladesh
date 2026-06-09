@@ -12,7 +12,7 @@ interface BookingFormProps {
 }
 
 export default function BookingForm({ preSelectedDoctor, preSelectedServiceId, onClearPreSelections, lang }: BookingFormProps) {
-  const t = (en: string, bn: string) => lang === 'bn' ? bn : en;
+  const t = (bn: string, en: string) => lang === 'bn' ? bn : en;
   const ref = useReveal();
   const [step,        setStep]        = useState<'form'|'success'>('form');
   const [branchId,    setBranchId]    = useState(BRANCHES[0].id);

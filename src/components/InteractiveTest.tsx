@@ -35,7 +35,7 @@ export default function InteractiveTest({ lang }: InteractiveTestProps) {
   const [alert,        setAlert]        = useState(false);
   const ref = useReveal();
 
-  const t = (en: string, bn: string) => lang === 'bn' ? bn : en;
+  const t = (bn: string, en: string) => lang === 'bn' ? bn : en;
 
   useEffect(() => {
     let id: ReturnType<typeof setInterval>;

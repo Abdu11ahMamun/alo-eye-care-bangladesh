@@ -6,7 +6,7 @@ import { useReveal } from '../hooks/useReveal';
 interface TestimonialsProps { lang: Lang; }
 
 export default function Testimonials({ lang }: TestimonialsProps) {
-  const t = (en: string, bn: string) => lang === 'bn' ? bn : en;
+  const t = (bn: string, en: string) => lang === 'bn' ? bn : en;
   const ref = useReveal();
 
   return (

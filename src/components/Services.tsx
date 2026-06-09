@@ -9,7 +9,7 @@ interface ServicesProps { onSelectServiceForBooking: (id: string) => void; lang:
 export default function Services({ onSelectServiceForBooking, lang }: ServicesProps) {
   const [activeId, setActiveId] = useState('cataract');
   const ref = useReveal();
-  const t = (en: string, bn: string) => lang === 'bn' ? bn : en;
+  const t = (bn: string, en: string) => lang === 'bn' ? bn : en;
   const selected = SERVICES.find(s => s.id === activeId) || SERVICES[0];
   const renderIcon = (name: string, size = 20) => { const I = (LucideIcons as any)[name] || LucideIcons.Eye; return <I size={size} />; };
 
